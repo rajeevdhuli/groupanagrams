@@ -52,7 +52,9 @@ class Solution {
             }
             right--;
         }
-        ans = ans.substring(0, ans.length() - 1);
-        return ans;
+        //ans = ans.substring(0, ans.length() - 1);
+        //ans=ans.trim();
+        //return ans;
+        return ans.trim();
     }
 }    
