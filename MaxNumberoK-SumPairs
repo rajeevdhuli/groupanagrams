@@ -9,7 +9,7 @@ O(nlogn)
         sum+= nums[left] + nums[right];
         while(left < right)
         {
-            if(sum == k)
+            if(sum == k) 
             {
                 sum=0;
                 cnt++;
