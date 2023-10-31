@@ -17,3 +17,24 @@ class Solution {
         return false;       
     }
 }
+
+
+
+class Solution {
+    public boolean rotateString(String s, String goal) 
+    {
+        String str = s + s;
+        int n = goal.length();
+        if(s.length() != goal.length())
+            return false;
+        int index = s.indexOf(goal.charAt(0));
+        while( index != -1)
+        {
+            String s1= str.substring(index,index+n);
+            if(s1.equals(goal))
+                return true;     
+            index = s.indexOf(goal.charAt(0),index+1);       
+        }
+        return false;       
+    }
+}
