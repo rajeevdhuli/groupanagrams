@@ -2,7 +2,7 @@
 class Solution {
     public int maxDepth(String s) 
     {
-        Stack<Character> st = new Stack<>();
+       // Stack<Character> st = new Stack<>();
         int n = s.length();
         int i = 0;
         int cnt = 0;
@@ -12,13 +12,13 @@ class Solution {
             char ch = s.charAt(i);
             if(ch == '(')
             {
-                st.push(ch);
+               // st.push(ch);
                 cnt++;
                 maxcnt  = Math.max(maxcnt, cnt);
             }
             else if (ch == ')')
             {
-                st.pop();
+                //st.pop();
                 cnt--;
             }
             i++;
@@ -26,3 +26,6 @@ class Solution {
         return maxcnt;
     }
 }
+
+
+YOU ACTUALLY DONT NEED STACK YOU CAN DIRECTLY COUNT IT.
