@@ -38,3 +38,20 @@ class Solution {
         return false;       
     }
 }
+
+
+SHORTCUT - DIRECTLY SEARCH FOR STRING -
+
+    class Solution {
+    public boolean rotateString(String s, String goal) 
+    {
+        if(s.length() != goal.length())
+           return false;       
+        String str = s + s;
+        int index = str.indexOf(goal);
+        if(index != -1)
+           return true;
+        return false;   
+    }
+}
+
