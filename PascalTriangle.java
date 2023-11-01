@@ -49,8 +49,48 @@ class Solution {
 
 Generatr Nth index of pascal triangle -
 
+O(n^2) -
+
+    
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        int row  = rowIndex + 1;
+        List<Integer> fin = new ArrayList<>();
+        for(int col = 1; col <= row; col++)
+        {
+            long res = 1;
+            int r = row - 1;
+            for(int i = 0; i < col - 1; i++)
+            {
+                res = res * (r - i );
+                res = res / ( i + 1 );
+            }
+            fin.add((int)res);
+        }
+        return fin;
+    }
+}
 
 
+O(n) - 
+
+
+
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        int row  = rowIndex + 1;
+        List<Integer> fin = new ArrayList<>();
+        long res = 1;
+        fin.add((int)res);
+        for(int i = 1; i < row; i++)
+        {
+            res = res * (row - i );
+            res = res / ( i ) ;
+            fin.add((int)res);
+        }
+        return fin;
+    }
+}    
 
 
 
