@@ -100,13 +100,13 @@ class Solution {
             end--;
             right--;
         }
-        while(left >= 0)
-        {
-            arr1[end] = arr1[left];
-            end--;
-            left--;
-        }
-
+        // while(left >= 0)
+        // {
+        //     arr1[end] = arr1[left];
+        //     end--;
+        //     left--;
+        // }
+        //NOT REQUIRED
     }    
     
 
