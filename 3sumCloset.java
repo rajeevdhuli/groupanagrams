@@ -3,7 +3,7 @@ class Solution {
         int n = nums.length;
         int ans  = 0;
         Arrays.sort(nums);
-        int min = Integer.MAX_VALUE;
+        int minDis = Integer.MAX_VALUE;
         for(int i = 0; i < n - 2; i++)
         {
             if(i > 0 && nums[i] == nums[i-1])
@@ -13,10 +13,10 @@ class Solution {
             while(l < r)
             {
                 int sum = nums[i] + nums[l] + nums[r];
-                int rem = Math.abs(target - sum);
-                if(min > rem)
+                int gap = Math.abs(target - sum);
+                if(minDis > gap)
                 {
-                    min = rem;
+                    minDis = gap;
                     ans = sum;
                 }
                 if( sum < target)
