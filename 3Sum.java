@@ -44,7 +44,7 @@ public static void main(String[] args) {
                continue;
             for(int j = i + 1; j < n - 1; j++)
             {
-                if( ( j - 1 > i) && ( nums[j] == nums[j - 1]) )
+                if( ( j - 1 > i) && ( nums[j] == nums[j - 1]) )   //[-1,-8,-8,9,16] - [-1,-8,-9] and [-8,-8,16] here will not be exceuted if only j == j-1 , i begins at index 2 and j at 3 , hence you have to make sure j should not be right next to i , to make this comparission.
                     continue;
                 List<Integer> temp = new ArrayList<>();
                 for(int k = j + 1; k < n; k++)
