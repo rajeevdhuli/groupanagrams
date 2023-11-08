@@ -101,3 +101,39 @@ public:
         return fin;
     }
 };   
+
+
+
+
+SHORTER HASHMAP --
+
+
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head==null)
+            return null;
+        Map<Integer,Integer> mp = new HashMap<>();
+        ListNode cur = head;
+        while(cur != null){
+            mp.put(cur.val, mp.getOrDefault(cur.val,0)+1);
+            cur = cur.next;
+        }
+        ListNode prev = null;
+        ListNode right = head;
+        cur = head;
+        while(right != null){
+            if(mp.get(right.val)==1){
+                cur.val = right.val;
+                prev = cur;
+                cur = cur.next;
+            }
+            right = right.next;
+        }
+        if(prev != null)
+           prev.next = null;
+        else
+            head = prev;   
+        return head;
+    }
+}    
+    
