@@ -1,4 +1,18 @@
-Stack<Integer> st1 = new Stack<>();
+class Result {
+
+    /*
+     * Complete the 'equalStacks' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER_ARRAY h1
+     *  2. INTEGER_ARRAY h2
+     *  3. INTEGER_ARRAY h3
+     */
+
+    public static int equalStacks(List<Integer> h1, List<Integer> h2, List<Integer> h3) {
+    // Write your code here
+    Stack<Integer> st1 = new Stack<>();
         Stack<Integer> st2 = new Stack<>();
         Stack<Integer> st3 = new Stack<>();
         
@@ -43,3 +57,7 @@ Stack<Integer> st1 = new Stack<>();
             
         }
         return ans;
+
+    }
+
+}
