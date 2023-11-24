@@ -18,3 +18,21 @@ class Solution {
         return prefix;
     }
 }
+
+
+
+class Solution {
+    public String longestCommonPrefix(String[] str) 
+    {
+        String res  = "";
+        Arrays.sort(str);
+        char[] c1= str[0].toCharArray();
+        char[] c2=str[str.length -1].toCharArray();
+        for(int i = 0 ; i< c1.length; i++){
+            if(c1[i] != c2[i])
+                break;
+            res+= c1[i];    
+        }
+        return res;
+    }
+}
