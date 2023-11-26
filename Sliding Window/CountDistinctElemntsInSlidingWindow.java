@@ -7,6 +7,7 @@ class Solution {
     ArrayList<Integer> countDistinct(int A[], int n, int k) {
         Map<Integer, Integer> hM = new HashMap<>();
         List<Integer> ans = new ArrayList<>();
+        int[] ans = new int[n-k+1];
 
 
        // Traverse the first window and store count  of every element in hash map
