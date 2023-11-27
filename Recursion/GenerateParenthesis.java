@@ -27,3 +27,32 @@ class Solution {
     }
 	// See above tree diagram with parameters (left, right, s) for better understanding
 }
+
+
+
+USING STRINGBUILDER - 
+
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<String>();
+        recurse(res, 0, 0,new StringBuilder(), n);
+        return res;
+    }
+    public void recurse(List<String> res,int left, int right, StringBuilder sb,int n)  {
+        if (right == n && left == n) {
+            res.add(new String(sb));
+            return;
+        }
+        if (left < n) {
+            sb.append('(');
+            recurse(res, left + 1, right, sb, n);
+            sb.deleteCharAt(sb.length()-1);
+        }
+        if (right < left) {
+            sb.append(')');
+            recurse(res, left, right + 1, sb, n);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+}	
