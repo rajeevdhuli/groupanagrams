@@ -27,3 +27,28 @@ public class Solution {
         return trolly;
     }
 }
+
+
+
+
+import java.util.List;
+import java.util.*;
+
+public class Solution {
+    public static void helper(List<String> trolly,int prev,int N, String temp,int start){
+        if(temp.length() == N){
+           trolly.add(temp);
+           return;
+        }
+        helper(trolly,0,N,temp+"0",start+1);
+        if(prev != 1){
+            helper(trolly,1,N,temp+"1",start+1);  
+        }  
+    }
+    public static List< String > generateString(int N) {
+        // Write your code here.
+        List<String> trolly = new ArrayList<>();
+        helper(trolly,0,N,"",0);
+        return trolly;
+    }
+}
