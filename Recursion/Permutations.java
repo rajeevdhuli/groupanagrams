@@ -26,6 +26,9 @@ class Solution {
 
 
 
+
+
+
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> trolly = new ArrayList<>();
@@ -47,3 +50,32 @@ class Solution {
         }
     }
 }
+
+
+
+
+using BOOLEAN ARRAY - 
+
+
+
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> trolly = new ArrayList<>();
+        helper(nums, 0, new ArrayList<>(),trolly,new boolean[nums.length]);
+        return trolly;
+    }
+
+    public void helper(int[] nums, int start, List<Integer> bag, List<List<Integer>> trolly,boolean[] used) {
+        if(bag.size() == nums.length)
+            trolly.add(new ArrayList<>(bag));  
+        for(int i  = 0; i < nums.length; i++){
+            if(used[i])
+               continue;
+            used[i] = true;   
+            bag.add(nums[i]);
+            helper(nums, 0, bag, trolly,used);
+            used[i] = false;
+            bag.remove(bag.size()-1);
+        }
+    }
+}    
