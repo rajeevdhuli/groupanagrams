@@ -15,3 +15,24 @@ class Solution {
         return ans;
     }
 }
+
+
+
+
+
+class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        int n = temperatures.length;
+        Stack<Pair<Integer,Integer>> st = new Stack<>();
+        int[] ans = new int[n];
+        for(int i= n - 1; i >= 0; i--){
+            while(!st.isEmpty() && st.peek().getKey() <= temperatures[i]){
+                st.pop();
+            }
+            if(st.size() >0)
+               ans[i] = st.peek().getValue() - i;
+            st.push(new Pair<>(temperatures[i],i)) ;  
+        }
+        return ans;
+    }
+}
