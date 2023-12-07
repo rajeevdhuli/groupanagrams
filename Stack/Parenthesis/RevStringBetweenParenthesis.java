@@ -54,3 +54,37 @@ class Solution {
         return str;
     }
 }
+
+
+
+
+class Solution {
+    public String reverseParentheses(String s) {
+        int n = s.length();
+        int i = 0;
+        String res = "";
+        Stack<Character> st = new Stack<>();
+        while( i < n ){
+            if(s.charAt(i) == '('){
+                st.push('(');
+            }else if(s.charAt(i) >= 'a' && s.charAt(i) <= 'z'){
+                st.push(s.charAt(i));
+            }else if (s.charAt(i) == ')'){
+                String temp ="";
+                while(st.peek() != '('){
+                  temp+= st.pop();
+                }
+                st.pop();
+                for(char c:temp.toCharArray()){
+                  st.push(c);
+                }
+            } 
+            i++;
+        }
+        while(!st.isEmpty()){
+          
+          res= st.pop() + res;
+        }
+        return res;
+    }
+}
