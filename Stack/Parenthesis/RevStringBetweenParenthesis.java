@@ -88,3 +88,33 @@ class Solution {
         return res;
     }
 }
+
+
+
+
+
+
+
+
+
+class Solution {
+        public String reverseParentheses(String s) {
+        Stack<String> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        int n = s.length();
+        for(int i = 0 ;i < n ;i++){
+          char ch = s.charAt(i);
+          if(ch >= 'a' && ch <= 'z'){
+            sb.append(ch);
+          }else if(ch == '('){
+            st.push(sb.toString());
+            sb.setLength(0);
+          }else if(ch == ')'){
+            StringBuilder temp = new StringBuilder(st.pop());
+            StringBuilder res = new StringBuilder(sb.reverse());
+            sb = temp.append(res);
+          }
+        }
+        return sb.toString();
+    }
+}
