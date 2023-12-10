@@ -37,3 +37,45 @@ class Solution {
         return false;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null){
+            return true;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root.left);
+        queue.add(root.right);
+        while(!queue.isEmpty()){
+            TreeNode lsub = queue.poll();
+            TreeNode rsub = queue.poll();
+            if(lsub == null && rsub == null)
+                continue;
+            if(lsub == null || rsub == null || lsub.val != rsub.val){
+                return false;
+            }
+            queue.offer(lsub.left);
+            queue.offer(rsub.right);
+            queue.offer(lsub.right);
+            queue.offer(rsub.left); 
+        }
+        return true;
+    }
+}
+
+
