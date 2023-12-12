@@ -51,3 +51,34 @@ class Solution {
         return cnt;
     }
 }
+
+
+
+
+
+
+
+class Solution {
+    // private int cnt = 0;
+    public int pathSum(TreeNode root, int targetSum) {
+        if(root == null)
+           return 0;
+        int c =  helper(root,(long)targetSum);
+        int a =  pathSum(root.left,targetSum);
+        int b =  pathSum(root.right,targetSum);
+        return a+b+c; 
+    }
+    public int helper(TreeNode root, long sum){
+        int cnt = 0;
+        if(root == null){
+            return 0;
+        }
+
+        if(sum == root.val ){
+            cnt++;
+        }
+        cnt+= helper(root.left,sum - root.val);
+        cnt+= helper(root.right,sum - root.val);
+        return cnt;
+    }
+}
