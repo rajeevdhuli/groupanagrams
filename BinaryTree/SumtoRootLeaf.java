@@ -1,3 +1,5 @@
+DFS
+
 class Solution {
     public int sumNumbers(TreeNode root) {
         int[] ans = new int[1];
@@ -21,7 +23,7 @@ class Solution {
 
 
 
-
+DFS
 class Solution {
     public int sumNumbers(TreeNode root) {
         return helper(root,0);
@@ -37,5 +39,39 @@ class Solution {
         int leftsum = helper(root.left,sum);
         int rightsum =helper(root.right,sum);
         return leftsum + rightsum;
+    }
+}
+
+
+
+
+
+
+
+
+BFS
+
+class Solution {
+    public int sumNumbers(TreeNode root) {
+         Queue<Pair<TreeNode,Integer>> queue = new LinkedList<>();
+        int res = 0;
+        if (root != null) {
+            queue.offer(new Pair(root,root.val));
+        }
+        while (!queue.isEmpty()) {
+            var temp = queue.poll();
+            TreeNode node = temp.getKey();
+            int curSum = temp.getValue();
+            if(node.left == null && node.right == null){
+                res+= curSum;
+            }
+            if(node.left != null){
+                queue.offer(new Pair(node.left,curSum*10 + node.left.val));
+            }
+            if(node.right != null){
+                queue.offer(new Pair(node.right,curSum*10 + node.right.val));
+            }
+        }
+        return res;
     }
 }
