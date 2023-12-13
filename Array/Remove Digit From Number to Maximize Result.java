@@ -11,3 +11,12 @@ class Solution {
         return number;
     }
 }
+
+
+
+example -    133235 
+     removing first 3 - 13235
+     removinf second 3 - 13235
+     removing three 3 - 13325
+
+    so you have to remove digit which is always less than next digit.
