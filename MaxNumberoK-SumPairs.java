@@ -1,39 +1,30 @@
 O(nlogn)
 
+class Solution {
+    public int maxOperations(int[] nums, int k) {
         Arrays.sort(nums);
         int n = nums.length;
-        int left = 0;
+        int left = 0; 
         int right = n - 1;
         int sum = 0;
         int cnt = 0;
-        sum+= nums[left] + nums[right];
-        while(left < right)
-        {
-            if(sum == k) 
-            {
-                sum=0;
-                cnt++;
-                left++;
+        while(left < right){
+            sum =  nums[left] + nums[right];
+            if(sum == k){
+               cnt++;
+               left++;
+               right --;
+            }
+            else if (sum > k){
                 right--;
-                sum+= nums[left] + nums[right];
-
             }
-            else if(sum < k)
-            {
-                sum-= nums[left];
+            else{
                 left++;
-                sum+= nums[left];
-               
             }
-            else
-            {
-                sum-= nums[right];
-                right--;
-                sum+= nums[right];
-            }
-       }
+        }
         return cnt;
-
+    }
+}
 
 O(n) time, O(n) space
 
