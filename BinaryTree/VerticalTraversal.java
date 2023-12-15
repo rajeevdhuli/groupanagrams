@@ -1,3 +1,5 @@
+O(NLOGN) , O(N) -
+
 class Pair{
 	Node root;
 	int level;
