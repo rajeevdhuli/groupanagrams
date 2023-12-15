@@ -177,3 +177,67 @@ class Solution {
         return zigzag;
     }
 }
+
+
+
+
+
+
+
+usiong two stack -
+
+
+ /**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> zigzag = new ArrayList<>();
+        if(root == null){
+            return zigzag;
+        }
+        Stack<TreeNode> cur = new Stack<>();
+        Stack<TreeNode> next = new Stack<>();
+        cur.push(root);
+        while(!cur.isEmpty() || !next.isEmpty()){
+            List<Integer> list = new ArrayList<>();
+            while(!cur.isEmpty()){
+                TreeNode temp = cur.pop();
+                if(temp.left != null){
+                    next.push(temp.left);
+                }
+                if(temp.right != null){
+                    next.push(temp.right);
+                }
+                list.add(temp.val);
+            }
+            zigzag.add(list);
+            List<Integer> rlist = new ArrayList<>();
+            while(!next.isEmpty()){
+                TreeNode ex = next.pop();
+                if(ex.right != null){
+                    cur.push(ex.right);
+                }
+                if(ex.left != null){
+                    cur.push(ex.left);
+                }
+                rlist.add(ex.val);
+            }
+            if(rlist.size() > 0)
+            zigzag.add(rlist);
+        }
+        return zigzag;
+    }
+}   
