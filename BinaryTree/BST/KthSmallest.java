@@ -45,4 +45,28 @@ class Solution {
 }
 
 
+O(min(H,K)) ,o(H) -
+
+    class Solution {
+    private int k = 0;
+    private int ans = 0;
+    public int kthSmallest(TreeNode root, int k) {
+        this.k = k;
+        helper(root);
+        return ans;
+    }
+    public void helper(TreeNode root){
+        if(root == null){
+            return;
+        }
+        helper(root.left);
+        k--;
+        if(k == 0){
+            ans = root.val;
+            return;
+        }
+        helper(root.right);
+    }
+}
+
 
