@@ -54,3 +54,31 @@ SHORTCUT - DIRECTLY SEARCH FOR STRING -
         return false;   
     }
 }
+
+
+
+
+
+
+class Solution {
+    public boolean rotateString(String s, String goal) 
+    {
+        if(s.length() != goal.length()){
+            return false;
+        }
+        String str = s + s;
+        int n = goal.length();
+        int j = n ;
+        int i = 0;
+        while(j < str.length()){
+            String st = str.substring(i,j);
+            if(st.equals(goal)){
+                return true;
+            }
+            i++;
+            j++;
+        }
+        return false;
+    }
+}
+
