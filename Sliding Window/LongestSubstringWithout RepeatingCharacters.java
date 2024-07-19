@@ -81,4 +81,38 @@ class Solution {
         }
         return maxLength;
     }
+}   
+
+
+
+
+
+
+
+
+O(N) - 
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        if(n < 2)
+           return n;
+        int maxLength = 1;
+        int i = 0 ;
+        int j = i + 1;
+        Set<Character> set = new HashSet<>();
+        set.add(s.charAt(i));
+        while(j < n){
+            if(set.contains(s.charAt(j))){
+                set.remove(s.charAt(i));
+                i++;
+            }
+            else{
+                set.add(s.charAt(j));
+                maxLength = Math.max(maxLength,j-i+1);
+                j++;
+            }
+        }
+        return maxLength;
+    }
 }    
