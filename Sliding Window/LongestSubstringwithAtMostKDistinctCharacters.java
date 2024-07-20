@@ -46,7 +46,7 @@ public class Solution {
             Set<Character> distinctChars = new HashSet<>();
             for (int end = start; end < n; end++) {
                 distinctChars.add(str.charAt(end));
-                if (distinctChars.size() == k) {
+                if (distinctChars.size() <= k) {
                     maxLength = Math.max(maxLength, end - start + 1);
                 } else if (distinctChars.size() > k) {
                     break; // No need to check further as we already exceeded k distinct characters
