@@ -50,3 +50,28 @@ class Solution {
         return cnt;
     }
 }  
+
+
+instead of using sum == goal intialize 0 at he start itself
+
+
+class Solution {
+public:
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
+        int n = nums.size();
+        unordered_map<int,int> mp;
+        int cnt  = 0;
+        int sum = 0 ;
+        mp[0] = 1;
+        for(int i = 0 ; i< n ; i++){
+            sum = sum + nums[i];
+            
+            int rem = sum - goal;
+            if(mp.count(rem)){
+                cnt+= mp[rem];
+            }
+            mp[sum]++;
+        }
+        return cnt;
+    }
+};
