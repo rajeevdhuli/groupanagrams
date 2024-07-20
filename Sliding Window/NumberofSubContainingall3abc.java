@@ -30,3 +30,34 @@ example - a b a b c b c a
     a b a b c | b c
     a b a b c | b c a
   so it reaches all characters then it will be same window for others hence cnt = n - j;
+
+
+
+
+
+More easy to understand
+
+
+
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int n = s.size();
+        int start = 0;
+        int cnt = 0 ;
+        unordered_map<char,int> mp;
+        for(int end = 0 ; end < n ; end++){
+            mp[s[end]]++;
+            while(mp.size() == 3){
+                cnt+= (n-end);
+                if(mp[s[start]] ==  1){
+                    mp.erase(s[start]);
+                }else{
+                    mp[s[start]]--;
+                }
+                start++;
+            }
+        }
+        return cnt;
+    }
+};
