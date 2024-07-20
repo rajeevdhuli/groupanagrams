@@ -26,3 +26,42 @@ public class Solution {
 	}
 
 }
+
+
+
+
+brute force - 
+
+
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Solution {
+    public static int kDistinctChars(int k, String str) {
+        int n = str.length();
+        int maxLength = 0;
+
+        for (int start = 0; start < n; start++) {
+            Set<Character> distinctChars = new HashSet<>();
+            for (int end = start; end < n; end++) {
+                distinctChars.add(str.charAt(end));
+                if (distinctChars.size() == k) {
+                    maxLength = Math.max(maxLength, end - start + 1);
+                } else if (distinctChars.size() > k) {
+                    break; // No need to check further as we already exceeded k distinct characters
+                }
+            }
+        }
+
+        return maxLength;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        String str = "eceba";
+        int k = 2;
+        System.out.println(sol.kDistinctChars(k, str)); // Output: 3
+    }
+}
+
