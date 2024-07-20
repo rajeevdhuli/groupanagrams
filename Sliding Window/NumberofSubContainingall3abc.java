@@ -61,3 +61,42 @@ public:
         return cnt;
     }
 };
+
+
+
+Brute force - 
+
+
+
+
+#include <iostream>
+#include <unordered_set>
+#include <string>
+
+class Solution {
+public:
+    int numberOfSubstrings(std::string s) {
+        int n = s.size();
+        int cnt = 0;
+        
+        for (int start = 0; start < n; start++) {
+            std::unordered_set<char> distinctChars;
+            for (int end = start; end < n; end++) {
+                distinctChars.insert(s[end]);
+                if (distinctChars.size() == 3) {
+                    cnt += (n - end);
+                    break;
+                }
+            }
+        }
+        
+        return cnt;
+    }
+};
+
+int main() {
+    Solution sol;
+    std::string s = "abcabc";
+    std::cout << sol.numberOfSubstrings(s) << std::endl; // Output: 10
+    return 0;
+}
