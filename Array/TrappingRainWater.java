@@ -1,3 +1,4 @@
+O(n2) , O(1) ----- Brute force----------
 class Solution {
     public int trap(int[] height) {
         int n = height.length;
