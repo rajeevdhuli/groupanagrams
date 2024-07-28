@@ -14,7 +14,49 @@ class Solution {
     }
 }
 
+c++ O(N)    -
 
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> vec;
+        int cnt1 = 0;
+        int cand1 = INT_MIN;
+        int cnt2 = 0;
+        int cand2 = INT_MIN;
+        for(int i = 0 ; i < n; i++){
+            if(cand1 == nums[i] && cand2 != nums[i]) {
+                cnt1++;
+            }else if(cnt1 == 0 && cand2 != nums[i]){
+                cand1 = nums[i];
+                cnt1++;
+            }else if(cand2 == nums[i] && cand1 != nums[i]){
+                cnt2++;
+            }else if(cnt2 == 0 && cand1 != nums[i]){
+                cand2 = nums[i];
+                cnt2++; 
+            }else if(cand2 != nums[i] && cand1 != nums[i]){
+                cnt1--;
+                cnt2--;
+            }
+        }
+        int c1 = 0 , c2 = 0;
+        for(int i = 0; i < n ; i++){
+            if(nums[i] == cand1){
+                c1++;
+            }
+            if(nums[i] == cand2){
+                c2++;
+            }
+        }
+        if(c1 >= (int)(n/3)+1)
+           vec.push_back(cand1);
+        if(c2 >= (int) (n/3)+1)   
+           vec.push_back(cand2);
+        return vec;
+    }
+};    
 
 
 
