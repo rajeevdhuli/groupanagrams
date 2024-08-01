@@ -46,4 +46,40 @@ class MyStack
 	       return true;
 	   return false;
 	}
-	
+
+
+
+
+
+
+
+
+	class MyStack {
+    private int[] arr;
+    private int top;
+
+    public MyStack() {
+        arr = new int[1000];
+        top = 0;
+    }
+
+    public void push(int x) {
+        // Your Code
+        if(top == 1000){
+            return;
+        }
+        arr[top] =  x;
+        top++;
+    }
+
+    public int pop() {
+        // Your Code
+        if(top == 0){
+            return -1;
+        }
+        top--;
+        int x = arr[top];
+        return x;
+    }
+}
+
