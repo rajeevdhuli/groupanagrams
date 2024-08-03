@@ -27,3 +27,30 @@ string postfixToPrefix(string &s){
     res = st.top();
     return res;
 }
+
+
+
+
+JAVA - 
+    
+class Solution {
+    static String postToPre(String post_exp) {
+        // code here
+        int n = post_exp.length();
+        Stack<String> st = new Stack<>();
+        
+        for(int i = 0 ; i < n ; i++){
+            char ch = post_exp.charAt(i);
+            if(Character.isLetter(ch)){
+                st.push(String.valueOf(ch));
+            }else{
+                String c1 = st.pop();
+                String c2 = st.pop();
+                String temp = ch + c2 + c1;
+                st.push(temp);
+            }
+        }
+        return st.pop();
+    }
+}
+
