@@ -80,3 +80,72 @@ bool higherPrec(char c1, char c2){
 	}
 	return false;
 }
+
+
+
+
+JAVA --
+
+
+class Solution {
+    // Function to convert an infix expression to a postfix expression.
+    public static String infixToPostfix(String exp) {
+        // Your code here
+        int n = exp.length();
+        String res = "";
+        Stack<Character> st = new Stack<>();
+        for(int i = 0 ; i < n; i++){
+            char ch = exp.charAt(i);
+            if(ch == '('){
+                st.push(ch);
+            }else if(Character.isLetter(ch) || Character.isDigit(ch)){
+                res =  res + ch;
+            }else if(ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^'){
+                while((!st.isEmpty()) && (st.peek() != '(' || st.peek() != ')') &&
+                   (higherPrec(st.peek(),ch))){
+                       res = res + st.pop();
+                   }
+                st.push(ch);
+            }else if(ch == ')'){
+                while(!st.isEmpty() && st.peek() != '('){
+                    res = res + st.peek();
+                    st.pop();
+                }
+                st.pop();
+            }
+        }
+        while(!st.isEmpty()){
+            res = res + st.pop();
+        }
+        return res;
+    }
+    public static boolean higherPrec(char c1, char c2){
+        int a = weight(c1);
+        int b = weight(c2);
+        if(a >= b){
+            return true;
+        }
+        return false;
+    }
+    public static int weight(char c){
+        int num = 0;
+        switch (c){
+            case '+':
+                num = 1;
+                break;
+            case '-':
+                num = 1;
+                break;
+            case '*':
+                num = 2;
+                break;
+            case '/':
+                num = 2;
+                break;
+            case '^':
+                num = 3;
+                break;
+        }
+        return num;
+    }
+}	
