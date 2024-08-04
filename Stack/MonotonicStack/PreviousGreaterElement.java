@@ -1,3 +1,4 @@
+/*previous greater or next greater to the left*/
 class Solution {
     public int[] prevGreaterElement(int[] nums) {
         int n = nums.length;
