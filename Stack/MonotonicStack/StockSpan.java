@@ -1,3 +1,23 @@
+O(N^2)-
+
+    vector<int> v;
+    for(int i=0;i<n;i++)
+    {
+        int span=1;
+        for(int j=i-1;j>=0;j--)
+        {
+            if(price[i]>price[j])
+            {
+                span++;
+                
+            }
+        }
+        v.push_back(span);
+    }
+    return v;
+
+
+O(N) --
 class Solution {
     // Function to calculate the span of stockâ€™s price for all n days.
     public static int[] calculateSpan(int price[], int n) {
