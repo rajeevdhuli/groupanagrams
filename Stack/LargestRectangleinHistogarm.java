@@ -20,42 +20,34 @@ class Solution {
 
 O(N) , O(3N) -
 
-
 class Solution {
     public int largestRectangleArea(int[] heights) {
+        int maxArea = 0 ;
         int n = heights.length;
         int[] leftSmall = new int[n];
         int[] rightSmall = new int[n];
         Stack<Integer> st = new Stack<>();
-        //left Boundary
-        for(int i = 0; i < n ; i++){
-            while(!st.empty() && heights[i] <= heights[st.peek()]){
-                st.pop();
-            }
-            leftSmall[i] = (st.isEmpty()) ? 0 : (st.peek() + 1);
-            st.push(i);
-        }
-        //Empty Stack
-        while(!st.isEmpty()){
-            st.pop();
-        }
-        //Right Boundary
-        for(int i = n - 1 ; i >= 0; i--){
+        for(int i =  0; i < n ; i++){
             while(!st.isEmpty() && heights[i] <= heights[st.peek()]){
                 st.pop();
             }
-            rightSmall[i] = (st.isEmpty()) ? (n-1) : (st.peek() - 1);
+            leftSmall[i] = (st.isEmpty()) ? -1 : (st.peek());
             st.push(i);
         }
-        //Calaculate Area
-        int maxArea = 0;
-        for(int i = 0 ;i < n ;i++){
-            maxArea =Math.max(maxArea, (rightSmall[i] - leftSmall[i] + 1 ) * heights[i]);
+        st.clear();
+        for(int i =  n - 1; i >= 0 ;i--){
+            while(!st.isEmpty() && heights[i] <= heights[st.peek()]){
+                st.pop();
+            } 
+            rightSmall[i] = (st.isEmpty()) ? n :(st.peek());
+            st.push(i);
+        }
+        for(int i = 0; i < n; i++){
+            maxArea = Math.max(maxArea,(rightSmall[i] - leftSmall[i] - 1) * heights[i]);
         }
         return maxArea;
     }
 }
-
 
 
 
