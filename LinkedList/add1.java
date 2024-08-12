@@ -1,3 +1,47 @@
+Optimal - 
+
+class Solution {
+    public Node addOne(Node head) {
+        // code here.
+        Node cur = reverse(head);
+        Node curHead = cur;
+        while(cur != null){
+            if(cur.data < 9){
+                cur.data = cur.data + 1;
+                return reverse(curHead);
+            }else{
+                cur.data = 0;
+                if(cur.next == null){
+                    cur.next = new Node(1);
+                    cur = cur.next;
+                    return reverse(curHead);
+                }
+                cur = cur.next;
+            }
+        }
+        return null;
+    }
+    public Node reverse(Node head){
+        Node prev = null;
+        while(head != null){
+            Node temp = head.next;
+            head.next = prev;
+            prev = head;
+            head = temp;
+        }
+        return prev;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 class Solution
 {
     public static Node addOne(Node head) 
