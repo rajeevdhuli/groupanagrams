@@ -24,37 +24,30 @@ Class Solution {
 
 O(N) , O(N) -
 
-
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        ListNode cur = head;
-        ListNode slow = cur;
-        ListNode fast = cur;
-        while(fast != null && fast.next != null)
-        {
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }
-        ListNode right = slow;
         ListNode prev = null;
-        ListNode temp = right;
-        while(temp != null)
-        {
-            ListNode nex = temp.next;
-            temp.next = prev;
-            prev = temp;
-            temp = nex;
+        while(slow != null){
+            ListNode temp = slow.next;
+            slow.next = prev;
+            prev = slow;
+            slow = temp;
         }
         ListNode left = head;
-        while(prev != null)
-        {
-            if(prev.val != left.val)
-               return false;
-            prev = prev.next;
+        ListNode right = prev;
+        while(left != null && right != null){
+            if(left.val != right.val){
+                return false;
+            }
             left = left.next;
-
+            right = right.next;
         }
         return true;
     }
-}    
-    
+}
