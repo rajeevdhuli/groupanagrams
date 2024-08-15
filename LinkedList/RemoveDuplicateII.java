@@ -1,3 +1,35 @@
+SLOW AND FAST - EASIER WITH FLAG -
+
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(-1);
+        ListNode slow = dummy;
+        ListNode fast = head;
+        boolean hasDuplicates = false;
+        while(fast != null ){
+            while(fast.next != null && fast.val == fast.next.val){
+                fast = fast.next;
+                hasDuplicates = true;
+            }
+            if(hasDuplicates){
+                fast =  fast.next;
+                shift = false;
+            }else 
+            {
+               slow.next = fast;
+               slow = slow.next;
+               fast = fast.next;
+            }
+            
+        }
+        slow.next = null;
+        return dummy.next;
+    }
+}
+
+
+
+
 SLOW AND FAST - 
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
