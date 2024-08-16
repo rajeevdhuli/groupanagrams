@@ -37,3 +37,38 @@ class GfG
         return head;
     }
 }
+
+
+
+optimized - 
+
+
+public static DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data) {
+    // Write your code here
+    DoublyLinkedListNode newNode = new DoublyLinkedListNode(data);
+    if(llist == null){
+        return newNode;
+    }
+    //insert at beginning
+    if(llist.data > newNode.data){
+        newNode.next = llist;
+        llist.prev = newNode;
+        return newNode;
+    }
+    DoublyLinkedListNode cur = llist;
+    //move until u meet a element greater then the element to be inserted
+    while(cur.next != null && cur.next.data < data){
+        cur = cur.next;
+    }
+    DoublyLinkedListNode nextNode = cur.next;
+    cur.next = newNode;
+    newNode.prev= cur;
+    //if the nextNode is not null
+    if(nextNode != null){
+       newNode.next = nextNode;
+       nextNode.prev = newNode;
+    }else{
+        newNode.next = null;
+    }
+    return llist;
+}
