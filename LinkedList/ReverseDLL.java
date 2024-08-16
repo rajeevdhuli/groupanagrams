@@ -1,3 +1,37 @@
+//Optimized with commnets for understanding
+public static Node reverseDLL(Node head) {
+    // Handle edge case: If the list is empty or has only one node, return the head as it is
+    if (head == null || head.next == null) {
+        return head;
+    }
+    
+    // Initialize pointers
+    Node pre = null; // This will eventually become the new head of the reversed list
+    
+    // Traverse the list and reverse the pointers
+    while (head != null) {
+        // Save the next node (the node after the current node)
+        Node temp = head.next;
+        
+        // Reverse the current node's pointers
+        head.next = head.prev; // Set the current node's next to its previous node
+        head.prev = temp; // Set the current node's previous to the saved next node
+        
+        // Move the 'pre' pointer to the current node
+        pre = head;
+        
+        // Move to the next node in the original list
+        head = temp;
+    }
+    
+    // After the loop, 'pre' points to the new head of the reversed list
+    return pre;
+}
+
+
+
+
+
 public class Solution
 {
     public static Node reverseDLL(Node head)
