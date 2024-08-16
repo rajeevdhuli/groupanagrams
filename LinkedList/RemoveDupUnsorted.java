@@ -38,26 +38,31 @@ class Solution {
 
 shorter - optimized
 
-public Node removeDuplicates(Node head) {
-        if (head == null) {
-            return null;
+class Solution {
+  public:
+    Node *removeDuplicates(Node *head) {
+        // your code goes here
+if (head == nullptr) {
+            return nullptr;
         }
 
-        Set<Integer> seen = new HashSet<>();
-        Node cur = head;
-        Node prev = null;
+        std::unordered_set<int> seen; // Set to track seen values
+        Node* cur = head;
+        Node* prev = nullptr;
 
-        while (cur != null) {
-            if (seen.contains(cur.data)) {
+        while (cur != nullptr) {
+            if (seen.find(cur->data) != seen.end()) {
                 // If the value has already been seen, skip the current node
-                prev.next = cur.next;
+                prev->next = cur->next;
+                delete cur; // Clean up the skipped node
             } else {
                 // If it's the first occurrence, add it to the set and move prev forward
-                seen.add(cur.data);
+                seen.insert(cur->data);
                 prev = cur;
             }
-            cur = cur.next;
+            cur = cur->next;
         }
 
         return head;
     }
+};
