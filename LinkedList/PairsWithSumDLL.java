@@ -1,37 +1,27 @@
 class Solution {
     public static ArrayList<ArrayList<Integer>> findPairsWithGivenSum(int target, Node head) {
         // code here
-        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
-        Node cur = head;
-        while(cur.next != null){
-            cur = cur.next;
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        Node tail = head;
+        while(tail.next != null){
+            tail = tail.next;
         }
-        Node tail = cur;
-        cur = head;
-        
-        
-        while(cur.data < tail.data){
-            
-            int sum = cur.data + tail.data;
-            ArrayList<Integer> res = new ArrayList<>();
-            
-            if( sum ==  target){
-                res.add(cur.data);
-                res.add(tail.data);
-                ans.add(res);
-                cur = cur.next;
+        while(head != null && tail != null && head.data < tail.data){
+            // adding head.data < tail.data to make sure duplicates do not come
+            int sum = head.data + tail.data;
+            if(sum == target){
+                ArrayList<Integer> temp = new ArrayList<>();
+                temp.add(head.data);
+                temp.add(tail.data);
+                list.add(temp);
+                head = head.next;
                 tail = tail.prev;
+            }else if(sum > target){
+                tail = tail.prev;
+            }else{
+                head = head.next;
             }
-            
-            else if(sum > target){
-                tail= tail.prev;
-            } 
-            
-            else if (sum <  target){
-                cur = cur.next;
-            }
-
         }
-        return ans;
+        return list;
     }
 }
