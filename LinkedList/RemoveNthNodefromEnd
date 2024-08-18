@@ -36,3 +36,30 @@ class Solution {
         return head;
     }
 }
+
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) 
+    {
+        if(head == null || head.next == null){
+            return null;
+        }
+        ListNode slow = head;
+        ListNode fast = head;
+        int i = 1;
+        while(i <= n){
+            fast = fast.next;
+            i++;
+        }
+        // If fast is null, that means we're removing the head
+        if(fast == null){
+            return head.next;
+        }
+        while(slow !=  null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
+}
