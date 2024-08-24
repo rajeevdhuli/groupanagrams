@@ -33,6 +33,42 @@ class Solution {
     }
 }
 
+class Solution {
+    public String tictactoe(int[][] moves) {
+        String[][] matrix = new String[3][3];
+        int n = moves.length;
+        
+        // Populate the matrix with the moves
+        for (int i = 0; i < n; i++) {
+            matrix[moves[i][0]][moves[i][1]] = (i % 2 == 0) ? "A" : "B";
+        }
+        
+        // Check rows and columns for a winner
+        for (int i = 0; i < 3; i++) {
+            if (matrix[i][0] != null && matrix[i][0].equals(matrix[i][1]) && matrix[i][0].equals(matrix[i][2])) {
+                return matrix[i][0]; // Winner in a row
+            }
+            if (matrix[0][i] != null && matrix[0][i].equals(matrix[1][i]) && matrix[0][i].equals(matrix[2][i])) {
+                return matrix[0][i]; // Winner in a column
+            }
+        }
+        
+        // Check diagonals for a winner
+        if (matrix[0][0] != null && matrix[0][0].equals(matrix[1][1]) && matrix[0][0].equals(matrix[2][2])) {
+            return matrix[0][0]; // Winner in the main diagonal
+        }
+        if (matrix[0][2] != null && matrix[0][2].equals(matrix[1][1]) && matrix[0][2].equals(matrix[2][0])) {
+            return matrix[0][2]; // Winner in the anti-diagonal
+        }
+        
+        // Check if the game is a draw or pending
+        if (n == 9) {
+            return "Draw"; // All spots are filled
+        } else {
+            return "Pending"; // Moves are still pending
+        }
+    }
+}
 
 
 
